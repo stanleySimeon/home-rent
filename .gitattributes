@@ -1,12 +1,12 @@
 * text=auto
 
 *.blade.php diff=html
-*.css diff=css
-*.html diff=html
-*.md diff=markdown
 *.php diff=php
 *.json diff=json
 *.js diff=javascript
+*.css diff=css
+*.html diff=html
+*.md diff=markdown
 
 
 /.github export-ignore
