@@ -5,8 +5,14 @@ module.exports = {
     "./resources/**/*.blade.php",
     "./resources/**/*.js",
     "./resources/**/*.vue",
+    "./resources/**/*.jsx",
+    "./resources/**/*.css",
+
   ],
   theme: {
+      fontFamily: {
+        'Lato': ['Lato', 'sans-serif'],
+      },
     extend: {},
   },
   plugins: [],
