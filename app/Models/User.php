@@ -10,6 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
+    /* This is a trait. It is a way to share code between classes. */
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
