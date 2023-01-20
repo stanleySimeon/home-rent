@@ -36,7 +36,6 @@
                     <span class="w-full flex space-x-8 items-center">
                         <div class="flex space-x-4">
                             <span class="bg-[#373737] rounded-full">
-                                <!-- get the user avatar -->
                                 <img src="{{ URL::asset('/storage/'.Auth::user()->avatar) }}" alt="avatar" class="w-12 h-12 rounded-full">
                             </span>
                             <span class="flex flex-col justify-center">
@@ -48,7 +47,7 @@
                         </div>
                     </span>
                     <div class="flex justify-end items-baseline relative">
-                        <span class="w-6 h-6  rounded-full flex items-center justify-center absolute left-1 top-1 right-1 text-[#f0831e] text-md font-bold">37</span>
+                        <span class="w-6 h-6  rounded-full flex items-center justify-center absolute left-0 top-1 right-1 text-[#f0831e] text-md font-bold">37</span>
                         <img src="{{ URL::asset('/images/cart.svg') }}" alt="cart" class="w-12 h-10">
                         <h1 class="text-lg">{{__('Cart')}}</h1>
                     </div>

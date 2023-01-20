@@ -5,12 +5,16 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
+use function GuzzleHttp\Promise\all;
+
 class RegisterController extends Controller
 {
+    use RegistersUsers;
     protected $redirectTo = RouteServiceProvider::HOME;
 
     public function __construct()
@@ -18,64 +22,30 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
-    protected function validator(Request $request)
+    protected function validator(array $data)
     {
-        // return Validator::make($data, [
-        //     'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5120',
-        //     'name' => ['required', 'string', 'max:255'],
-        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-        //     'password' => ['required', 'string', 'min:8', 'confirmed'],
-        //     'password_confirmation' => 'required|same:password',
-        // ]);
-
-        // $requestData = $data->except(['_token', 'password', 'password_confirmation']);
-        // $avatarName = 'lv_' . rand() . '.' . $data->avatar->extension();
-        // $data->avatar->move(public_path('storage/'), $avatarName);
-        // $requestData['avatar'] = $avatarName;
-
-        return Validator::make($request, [
+        return Validator::make($data, [
             'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5120',
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'password_confirmation' => 'required|same:password',
         ]);
-
-        // let request the data from the form and store it in the database
-        $requestData = $request->except(['_token', 'password', 'password_confirmation']);
-        $avatarName = 'lv_' . rand() . '.' . $request->avatar->extension();
-        $request->avatar->move(public_path('storage/'), $avatarName);
-        $requestData['avatar'] = $avatarName;
-        $requestData['name'] = $request->name;
-        $requestData['email'] = $request->email;
-        $requestData['password'] = Hash::make($request->password);
-        $requestData['password_confirmation'] = Hash::make($request->password_confirmation);
     }
 
-
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\Models\User
-     */
-    // protected function create(array $data)
-    // {
-    //     return User::create([
-    //         'name' => $data['name'],
-    //         'email' => $data['email'],
-    //         'password' => Hash::make($data['password']),
-    //     ]);
-    // }
-
-    protected function create(Request $request)
+    protected function create(array $data)
     {
-        $this->validator($request);
-        return redirect()->route('login');
+        $data = new Request($data);
+        return User::create([
+            $requestData = $data->except(['_token']),
+            $avatarName = 'lv_' . rand() . '.' . $data->avatar->extension(),
+            $data->avatar->move(public_path('storage/'), $avatarName),
+            $requestData['avatar'] = $avatarName,
+            'avatar' => $requestData['avatar'],
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'password_confirmation' => Hash::make($data['password_confirmation']),
+        ]);
     }
-    /**
-     * Get the guard to be used during registration.
-     *
-     * @return \Illuminate\Contracts\Auth\StatefulGuard
-     */
 }
