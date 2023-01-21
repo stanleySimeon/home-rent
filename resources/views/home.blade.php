@@ -34,7 +34,20 @@
                 @endguest
             </ul>
             <div class="w-full flex justify-between items-center px-8">
-                <a href="{{ ('') }}" class="text-[#ffffff] text-lg font-thin hover:text-gray-400">{{__('DASHBOARD')}}</a>
+                <nav>
+                    <ul>
+                        @if(Route::has('profile'))
+                        <li>
+                            <a href="{{ route('profile') }}" class="text-[#ffffff] text-md font-thin hover:text-gray-400">{{__('DASHBOARD')}}</a>
+                        </li>
+                        @endif
+                        @if(Route::has('house'))
+                        <li>
+                            <a href="{{ route('house') }}" class="text-[#ffffff] text-md font-thin hover:text-gray-400">{{__('ADD HOUSE')}}</a>
+                        </li>
+                        @endif
+                    </ul>
+                </nav>
                 <span class="cursor-pointer">
                     <span href="{{ route('logout') }}" onclick="event.preventDefault();
                                                              document.getElementById('logout-form').submit();">
@@ -85,7 +98,9 @@
                     </div>
                 </div>
             </div>
-            <div class="container w-full h-full"></div>
+            <div class="container w-full px-0 h-screen relative">
+                @yield('content')
+            </div>
         </div>
     </div>
 </body>

@@ -9,8 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-
-use function GuzzleHttp\Promise\all;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
