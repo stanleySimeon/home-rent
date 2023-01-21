@@ -8,7 +8,7 @@
     <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data" class="w-full space-y-4">
         @csrf
         <div class="w-full">
-            <input id="avatar" type="file" class="w-full py-2 border-b border-[#179fdf] bg-transparent outline-none @error('avatar') is-invalid @enderror" name="avatar" value="{{ old('avatar') }}" autofocus placeholder="Avatar">
+            <input id="avatar" type="file" class="w-full py-2 border-b border-[#179fdf] bg-transparent outline-none @error('avatar') is-invalid @enderror" name="avatar" value="{{ old('avatar') }}" required placeholder="Avatar">
             @error('avatar')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -16,7 +16,7 @@
             @enderror
         </div>
         <div class="w-full">
-            <input id="name" type="text" class="w-full py-2 border-b border-[#179fdf] bg-transparent outline-none @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" placeholder="Full Name" autofocus>
+            <input id="name" type="text" class="w-full py-2 border-b border-[#179fdf] bg-transparent outline-none @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" autofocus required autocomplete="name" placeholder="Full Name" autofocus>
             @error('name')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
