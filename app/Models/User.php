@@ -17,6 +17,11 @@ class User extends Authenticatable
         'avatar',
         'name',
         'email',
+        'country',
+        'city',
+        'state',
+        'zip_code',
+        'phone_number',
         'password',
         'password_confirmation',
     ];

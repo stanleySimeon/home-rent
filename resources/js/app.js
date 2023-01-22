@@ -1,15 +1,39 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes React and other helpers. It's a great starting point while
- * building robust, powerful web applications using React + Laravel.
- */
+const { times, delay } = require('lodash');
+
 require('../css/app.css');
 require('./bootstrap');
 
-/**
- * Next, we will create a fresh React component instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+// Create a function to show the specific states when the country is selected
+$(document).ready(function () {
+    $('#country').on('change', function () {
+        let country_id = this.value;
+        $.get('/get_states?country=' + country_id, function (data) {
+            $("#state").html(data);
+        });
+    });
 
-require('./components/Example');
+    $('#state').on('change', function () {
+        let state_id = this.value;
+        $.get('/get_cities?state=' + state_id, function (data) {
+            $("#city").html(data);
+
+        });
+    });
+
+    $('#country').on('change', function () {
+        let country_id = this.value;
+        $.get('/get_phone_code?country=' + country_id, function (data) {
+            $("#phone_code").html(data);
+        });
+    });
+
+    $('.name_over').on('mouseover', function () {
+        let dropdown = $(this).find('.dropdown-menu');
+        dropdown.show();
+    });
+
+    $('.name_over').on('mouseout', function () {
+        let dropdown = $(this).find('.dropdown-menu');
+        dropdown.hide();
+    });
+});

@@ -11,6 +11,12 @@ input:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0 30px #fdfdfd inset !important;
 }
 
+/* overflow color bar */
+::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+}
+
 @-webkit-keyframes animate-svg-stroke-1 {
     0% {
         stroke-dashoffset: 2306.2509765625px;

@@ -4,13 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>HomeRent</title>
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <!-- Styles -->
     <link rel="stylesheet" href="{{URL::asset('/css/app.css')}}">
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>iRent</title>
 </head>
 
 <body class="bg-[#fdfdfd]">
@@ -22,7 +21,6 @@
                     <img src="{{URL::asset('/images/home-o.svg')}}" alt="logo" class="w-12">
                 </a>
                 <div class="w-full hidden md:flex flex-col items-center mt-4">
-                    <!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
                     <svg class="w-60" viewBox="0 0 2377 1259" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
                         <path d="M980.461,466.489l313.417,-349.089l900.713,698.179l-290.921,-0l-2.561,404.559" style="fill: none; stroke: rgb(23, 159, 223); stroke-width: 13.89px;" class="svg-elem-1"></path>
                         <g>

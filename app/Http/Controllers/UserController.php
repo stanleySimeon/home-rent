@@ -33,6 +33,12 @@ class UserController extends Controller
             $user->update($requestData);
         }
 
+        if ($user->email != $request->email) {
+            if (User::where('email', $request->email)->exists()) {
+                return redirect()->back()->with('error', 'Email already taken');
+            }
+        }
+
         return redirect()->route('home')->with('success', 'Profile updated successfully');
     }
 }
