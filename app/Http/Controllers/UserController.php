@@ -5,13 +5,29 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use WisdomDiala\Countrypkg\Models\Country;
+use WisdomDiala\Countrypkg\Models\State;
 
 class UserController extends Controller
 {
     public function index(Request $request)
     {
         $profile = Auth::user();
-        return view('profile', compact('profile'));
+        $countries = Country::all();
+        $country_id = request('country');
+        $states = State::where('country_id', $country_id)->get();
+        return view('profile', compact('profile', 'countries', 'states'));
+    }
+
+    public function getStates()
+    {
+        $country_id = request('country');
+        $states = State::where('country_id', $country_id)->get();
+        $option = '<option value="">-- Select State --</option>';
+        foreach ($states as $state) {
+            $option .= '<option value="' . $state->name . '">' . $state->name . '</option>';
+        }
+        return $option;
     }
 
     public function updateProfile(Request $request)
@@ -19,7 +35,11 @@ class UserController extends Controller
         $this->validate($request, [
             'avatar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5120',
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . Auth::user()->id],
+            'phone' => ['required', 'string', 'max:255'],
+            'country' => ['required', 'string', 'max:255'],
+            'state' => ['required', 'string', 'max:255'],
+            'city' => ['required', 'string', 'max:255'],
         ]);
 
         $requestData = $request->except(['_token', '_method']);
@@ -31,12 +51,6 @@ class UserController extends Controller
             $request->avatar->move(public_path('storage/'), $avatarName);
             $requestData['avatar'] = $avatarName;
             $user->update($requestData);
-        }
-
-        if ($user->email != $request->email) {
-            if (User::where('email', $request->email)->exists()) {
-                return redirect()->back()->with('error', 'Email already taken');
-            }
         }
 
         return redirect()->route('home')->with('success', 'Profile updated successfully');

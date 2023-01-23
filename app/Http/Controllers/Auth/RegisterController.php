@@ -68,6 +68,7 @@ class RegisterController extends Controller
     public function getStates()
     {
         $country_id = request('country');
+
         $states = State::where('country_id', $country_id)->get();
         $option = '<option value="">-- Select State --</option>';
         foreach ($states as $state) {
@@ -90,10 +91,11 @@ class RegisterController extends Controller
     public function getCountryCode()
     {
         $country_id = request('country');
-        $country_code = Country::where('country_code', $country_id)->get();
+        $country_code = Country::where('country_id', $country_id)->get();
         $option = '<option value="">Select Country Code</option>';
         foreach ($country_code as $code) {
-            $option .= '<option value="' . $code->country_code . '">' . $code->country_code . '</option>';
+            $option .= '<option value="' . $code->country_id . '">' . $code->country_id . '</option>';
         }
+        return $option;
     }
 }

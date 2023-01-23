@@ -21,7 +21,7 @@
         <div class="flex justify-center items-center space-x-4">
             <div class="w-full"">
             <select name=" country" id="country" class="w-full py-2 border-b border-[#179fdf] bg-transparent outline-none @error('country') is-invalid @enderror" name="country" value="{{ old('country') }}" required>
-                <option>--Select your country --</option>
+                <option>-- Select your country --</option>
                 @foreach ($countries as $country)
                 <option value="{{ $country->id }}">{{ $country->name }}</option>
                 @endforeach

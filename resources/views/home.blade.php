@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{URL::asset('/css/app.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>iRent</title>
 </head>
 
@@ -30,9 +30,9 @@
                 </li>
                 @endif
                 @else
-                <li class="w-full flex items-baseline space-x-2">
+                <li class="w-full flex items-center space-x-4">
                     <h1 class="text-2xl text-bold text-[#179fdf]">iRent</h1>
-                    <span class="border-b border-bg-white w-full"></span>
+                    <i class="fas fa-home text-[#ffffff] text-lg"></i>
                 </li>
                 @endguest
             </ul>
@@ -70,6 +70,11 @@
                             $third_word = $name_parts[2];
                             $first_letter = substr($third_word, 0, 1);
                             echo $first_word . ' ' . ' ' . $second_word . ' ' . $first_letter . '.';
+                            } elseif (strlen($name_parts[0]) > 12) {
+                            $first_word = $name_parts[0];
+                            $second_word = $name_parts[1];
+                            $first_letter = substr($second_word, 0, 1);
+                            echo $first_word . ' ' . $first_letter . '.';
                             } else {
                             echo $name;
                             }
@@ -101,7 +106,7 @@
                     </div>
                 </div>
             </div>
-            <div class="container w-full px-0 h-screen absolute left-0 right-0 top-20 overflow-y-auto">
+            <div class="container w-full px-0 h-auto absolute left-0 right-0 top-20 overflow-y-auto">
                 @yield('content')
             </div>
         </div>
