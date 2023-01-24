@@ -30,17 +30,16 @@
             </label>
         </div>
         <div class="w-full">
-            <div class="w-full">
-                <button type="submit" class="bg-[#15236c] px-8 py-2 text-[#fdfdfd] hover:bg-opacity-90">
-                    {{ __('Login') }}
-                </button>
-
+            <button type="submit" class="bg-[#15236c] px-8 py-2 text-[#fdfdfd] hover:bg-opacity-90">
+                {{ __('Login') }}
+            </button>
+            <span>
                 @if (Route::has('password.request'))
                 <a class="btn btn-link" href="{{ route('password.request') }}">
-                    <!-- {{ __('Forgot Your Password?') }} -->
+                    {{ __('Forgot Your Password?') }}
                 </a>
                 @endif
-            </div>
+            </span>
         </div>
     </form>
 </div>

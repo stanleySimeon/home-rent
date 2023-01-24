@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use WisdomDiala\Countrypkg\Models\Country;
-use WisdomDiala\Countrypkg\Models\State;
 
 class UserController extends Controller
 {
@@ -14,20 +13,7 @@ class UserController extends Controller
     {
         $profile = Auth::user();
         $countries = Country::all();
-        $country_id = request('country');
-        $states = State::where('country_id', $country_id)->get();
-        return view('profile', compact('profile', 'countries', 'states'));
-    }
-
-    public function getStates()
-    {
-        $country_id = request('country');
-        $states = State::where('country_id', $country_id)->get();
-        $option = '<option value="">-- Select State --</option>';
-        foreach ($states as $state) {
-            $option .= '<option value="' . $state->name . '">' . $state->name . '</option>';
-        }
-        return $option;
+        return view('profile', compact('profile', 'countries'));
     }
 
     public function updateProfile(Request $request)
@@ -35,11 +21,10 @@ class UserController extends Controller
         $this->validate($request, [
             'avatar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5120',
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . Auth::user()->id],
+            'email' => ['required', 'string', 'email', 'max:255'],
             'phone' => ['required', 'string', 'max:255'],
             'country' => ['required', 'string', 'max:255'],
-            'state' => ['required', 'string', 'max:255'],
-            'city' => ['required', 'string', 'max:255'],
+            'address' => ['required', 'string', 'max:255'],
         ]);
 
         $requestData = $request->except(['_token', '_method']);
@@ -52,7 +37,6 @@ class UserController extends Controller
             $requestData['avatar'] = $avatarName;
             $user->update($requestData);
         }
-
         return redirect()->route('home')->with('success', 'Profile updated successfully');
     }
 }

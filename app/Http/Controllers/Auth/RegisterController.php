@@ -9,9 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use WisdomDiala\Countrypkg\Models\Country;
-use WisdomDiala\Countrypkg\Models\State;
-use App\Models\City;
+use App\Models\Country;
 
 class RegisterController extends Controller
 {
@@ -30,9 +28,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'country' => ['required', 'string', 'max:255'],
-            'city' => ['required', 'string', 'max:255'],
-            'state' => ['required', 'string', 'max:255'],
-            'zip_code' => ['required', 'string', 'max:10'],
+            'address' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'password_confirmation' => 'required|same:password',
         ]);
@@ -50,9 +46,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'country' => $data['country'],
-            'city' => $data['city'],
-            'state' => $data['state'],
-            'zip_code' => $data['zip_code'],
+            'address' => $data['address'],
             'phone_number' => $data['phone_number'],
             'password' => Hash::make($data['password']),
             'password_confirmation' => Hash::make($data['password_confirmation']),
@@ -63,29 +57,6 @@ class RegisterController extends Controller
     {
         $countries = Country::all();
         return view('auth.register', compact('countries'));
-    }
-
-    public function getStates()
-    {
-        $country_id = request('country');
-
-        $states = State::where('country_id', $country_id)->get();
-        $option = '<option value="">-- Select State --</option>';
-        foreach ($states as $state) {
-            $option .= '<option value="' . $state->name . '">' . $state->name . '</option>';
-        }
-        return $option;
-    }
-
-    public function getCities()
-    {
-        $state_id = request('state');
-        $cities = City::where('state_id', $state_id)->get();
-        $option = '<option value="">-- Select City --</option>';
-        foreach ($cities as $city) {
-            $option .= '<option value="' . $city->name . '">' . $city->name . '</option>';
-        }
-        return $option;
     }
 
     public function getCountryCode()

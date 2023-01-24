@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -18,9 +17,7 @@ class User extends Authenticatable
         'name',
         'email',
         'country',
-        'city',
-        'state',
-        'zip_code',
+        'address',
         'phone_number',
         'password',
         'password_confirmation',

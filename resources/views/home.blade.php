@@ -32,16 +32,21 @@
                 @else
                 <li class="w-full flex items-center space-x-4">
                     <h1 class="text-2xl text-bold text-[#179fdf]">iRent</h1>
-                    <i class="fas fa-home text-[#ffffff] text-lg"></i>
+                    <a href="{{ route('home') }}"><i class="fas fa-home text-[#ffffff] text-lg"></i></a>
                 </li>
                 @endguest
             </ul>
-            <div class="w-full flex justify-between items-center px-8">
+            <div class="w-full flex justify-between items-center px-8 py-8">
                 <nav>
-                    <ul>
+                    <ul class="space-y-4">
+                        @if(Route::has('dashboard'))
+                        <li>
+                            <a href="{{ route('dashboard') }}" class="text-[#ffffff] text-lg font-thin hover:text-gray-400">{{__('DASHBOARD')}}</a>
+                        </li>
+                        @endif
                         @if(Route::has('house'))
                         <li>
-                            <a href="{{ route('house') }}" class="text-[#ffffff] text-md font-thin hover:text-gray-400">{{__('ADD HOUSE')}}</a>
+                            <a href="{{ route('house') }}" class="text-[#989898] text-lg font-thin hover:text-gray-400">{{__('ADD HOUSE')}}</a>
                         </li>
                         @endif
                     </ul>

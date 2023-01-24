@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2756b8619cc95f1c6037dd62697282d1",
+    "content-hash": "ac619712688cfd6d4c3c55a74fce0e91",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1160,21 +1160,19 @@
         },
         {
             "name": "jaynilsavani/laravel-country-state-city",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jaynilsavani/laravel-country-state-city.git",
-                "reference": "e9c8e43a79ca3fee484fe4b6992aaab8d752811d"
+                "reference": "445e8d844b44f06b9953ae6a4c04feb3fbba8390"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jaynilsavani/laravel-country-state-city/zipball/e9c8e43a79ca3fee484fe4b6992aaab8d752811d",
-                "reference": "e9c8e43a79ca3fee484fe4b6992aaab8d752811d",
+                "url": "https://api.github.com/repos/jaynilsavani/laravel-country-state-city/zipball/445e8d844b44f06b9953ae6a4c04feb3fbba8390",
+                "reference": "445e8d844b44f06b9953ae6a4c04feb3fbba8390",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "^8.0",
-                "laravel/ui": "^3.0",
                 "php": "^7.3"
             },
             "type": "library",
@@ -1213,9 +1211,9 @@
             ],
             "support": {
                 "issues": "https://github.com/jaynilsavani/laravel-country-state-city/issues",
-                "source": "https://github.com/jaynilsavani/laravel-country-state-city/tree/1.0.0"
+                "source": "https://github.com/jaynilsavani/laravel-country-state-city/tree/1.1.0"
             },
-            "time": "2021-06-20T08:33:01+00:00"
+            "time": "2022-01-24T17:25:02+00:00"
         },
         {
             "name": "laravel/framework",
@@ -3140,16 +3138,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.11.10",
+            "version": "v0.11.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "e9eadffbed9c9deb5426fd107faae0452bf20a36"
+                "reference": "ba67f2d26278ec9266a5cfe0acba33a8ca1277ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/e9eadffbed9c9deb5426fd107faae0452bf20a36",
-                "reference": "e9eadffbed9c9deb5426fd107faae0452bf20a36",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/ba67f2d26278ec9266a5cfe0acba33a8ca1277ae",
+                "reference": "ba67f2d26278ec9266a5cfe0acba33a8ca1277ae",
                 "shasum": ""
             },
             "require": {
@@ -3210,9 +3208,9 @@
             ],
             "support": {
                 "issues": "https://github.com/bobthecow/psysh/issues",
-                "source": "https://github.com/bobthecow/psysh/tree/v0.11.10"
+                "source": "https://github.com/bobthecow/psysh/tree/v0.11.11"
             },
-            "time": "2022-12-23T17:47:18+00:00"
+            "time": "2023-01-23T16:14:59+00:00"
         },
         {
             "name": "ralouphie/getallheaders",

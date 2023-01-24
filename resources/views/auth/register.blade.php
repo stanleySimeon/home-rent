@@ -18,28 +18,17 @@
             <input id="email" type="email" class="w-full py-2 border-b border-[#179fdf] bg-transparent outline-none @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email">
         </div>
 
-        <div class="flex justify-center items-center space-x-4">
-            <div class="w-full"">
+        <div class="w-full">
             <select name=" country" id="country" class="w-full py-2 border-b border-[#179fdf] bg-transparent outline-none @error('country') is-invalid @enderror" name="country" value="{{ old('country') }}" required>
                 <option>-- Select your country --</option>
                 @foreach ($countries as $country)
-                <option value="{{ $country->id }}">{{ $country->name }}</option>
+                <option value="{{ $country->name }}">{{ $country->name }}</option>
                 @endforeach
-                </select>
-            </div>
-
-            <div class="w-full">
-                <select name="state" id="state" class="w-full py-2 border-b border-[#179fdf] bg-transparent outline-none @error('state') is-invalid @enderror" name="state" value="{{ old('state') }}" required>
-                </select>
-            </div>
+            </select>
         </div>
 
         <div class="w-full">
-            <input name="city" id="city" class="w-full py-2 border-b border-[#179fdf] bg-transparent outline-none @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" placeholder="City">
-        </div>
-
-        <div class="w-full">
-            <input id="zip_code" type="zip_code" class="w-full py-2 border-b border-[#179fdf] bg-transparent outline-none @error('zip_code') is-invalid @enderror" name="zip_code" value="{{ old('zip_code') }}" required autocomplete="zip_code" placeholder="Zip Code">
+            <input name="address" id="address" class="w-full py-2 border-b border-[#179fdf] bg-transparent outline-none @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required placeholder="Your address">
         </div>
 
         <div class="w-full">
