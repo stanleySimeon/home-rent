@@ -1,13 +1,5 @@
-* text=auto
-
-*.blade.php diff=html
-*.php diff=php
-*.json diff=json
-*.js diff=javascript
+*.js linguist-language=php
 *.css diff=css
 *.html diff=html
-*.md diff=markdown
+linguist-language=php
 
-
-/.github export-ignore
-CHANGELOG.md export-ignore
